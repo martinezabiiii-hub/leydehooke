@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es"><
+<head>
+  <meta charset="utf-8" /><
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carrera Quiz - Ley de Hooke (2 Jugadores)</title>
+  <link rel="stylesheet" href="estilos1726.css">
+<body>
+  <h1>Carrera Quiz — Ley de Hooke (2 jugadores)</h1>
+  <div class="subtitle">Responde las preguntas (A–D). Cada respuesta correcta hace avanzar tu muñeco píxel. 20 preguntas por jugador. ¡Gana quien llegue o quede más cerca!</div>
+
+  <div class="game">
+
+    
+    <div class="panel" id="panel1">
+      <h2>Jugador 1</h2>
+      <div class="meta">Progreso: <span class="score" id="score1">0</span> / 20</div>
+      <div class="question" id="q1">Cargando...</div>
+      <div class="options" id="opts1"></div>
+      <div class="controls-row">
+        <div class="small" id="feedback1">&nbsp;</div>
+        <div>
+          <button class="btn" id="next1" style="display:none">Siguiente</button>
+          <button class="btn secondary" id="skip1">Omitir</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="race-area"><
+      <div style="font-size:13px;color:#333">Pista de carrera</div>
+            <div class="track" id="track">
+        <div class="finish-line" title="Meta"></div>
+
+        
+        <div class="lane" style="height:50%;">
+          <div class="badge" style="background:var(--p1);color:white">Jugador 1</div>
+          <div class="player" id="avatar1" style="top:8px;">
+
+            
+
+            <svg viewBox="0 0 32 32" id="sprite1" role="img" aria-label="Muñeco 1"><
+              <g id="s1-f1"><rect x="13" y="2" width="6" height="6" fill="#ffdca8"/><rect x="12" y="8" width="8" height="6" fill="#c71585"/><rect x="10" y="14" width="12" height="12" fill="#c71585"/><rect x="6" y="22" width="6" height="4" fill="#c71585"/><rect x="20" y="22" width="6" height="4" fill="#c71585"/></g><!--Frame 1 visible por defecto (group <g> con formas que forman el píxel-art).-->
+              <g id="s1-f2" style="display:none"><rect x="13" y="2" width="6" height="6" fill="#ffdca8"/><rect x="12" y="8" width="8" height="6" fill="#c71585"/><rect x="10" y="14" width="12" height="12" fill="#c71585"/><rect x="8" y="22" width="6" height="4" fill="#c71585"/><rect x="18" y="22" width="6" height="4" fill="#c71585"/><rect x="9" y="12" width="2" height="4" fill="#c71585"/></g>
+              <g id="s1-f3" style="display:none"><rect x="13" y="2" width="6" height="6" fill="#ffdca8"/><rect x="12" y="8" width="8" height="6" fill="#c71585"/><rect x="10" y="14" width="12" height="12" fill="#c71585"/><rect x="6" y="22" width="6" height="4" fill="#c71585"/><rect x="20" y="22" width="6" height="4" fill="#c71585"/><rect x="15" y="12" width="2" height="4" fill="#c71585"/></g>
+              <g id="s1-f4" style="display:none"><rect x="13" y="2" width="6" height="6" fill="#ffdca8"/><rect x="12" y="8" width="8" height="6" fill="#c71585"/><rect x="10" y="14" width="12" height="12" fill="#c71585"/><rect x="8" y="22" width="6" height="4" fill="#c71585"/><rect x="18" y="22" width="6" height="4" fill="#c71585"/><rect x="21" y="12" width="2" height="4" fill="#c71585"/></g> 
+              
+            </svg>
+          </div>
+        </div>
+
+        
+        <div class="lane" style="height:50%;">
+          <div class="badge" style="background:var(--p2);color:white">Jugador 2</div>
+          <div class="player" id="avatar2" style="top:8px;">
+            <svg viewBox="0 0 32 32" id="sprite2" role="img" aria-label="Muñeco 2">
+              <g id="s2-f1"><rect x="13" y="2" width="6" height="6" fill="#ffd7d0"/><rect x="12" y="8" width="8" height="6" fill="#6b8e23"/><rect x="10" y="14" width="12" height="12" fill="#6b8e23"/><rect x="6" y="22" width="6" height="4" fill="#6b8e23"/><rect x="20" y="22" width="6" height="4" fill="#6b8e23"/></g>
+              <g id="s2-f2" style="display:none"><rect x="13" y="2" width="6" height="6" fill="#ffd7d0"/><rect x="12" y="8" width="8" height="6" fill="#6b8e23"/><rect x="10" y="14" width="12" height="12" fill="#6b8e23"/><rect x="8" y="22" width="6" height="4" fill="#6b8e23"/><rect x="18" y="22" width="6" height="4" fill="#6b8e23"/><rect x="9" y="12" width="2" height="4" fill="#ffd7d0"/></g>
+              <g id="s2-f3" style="display:none"><rect x="13" y="2" width="6" height="6" fill="#ffd7d0"/><rect x="12" y="8" width="8" height="6" fill="#6b8e23"/><rect x="10" y="14" width="12" height="12" fill="#6b8e23"/><rect x="6" y="22" width="6" height="4" fill="#6b8e23"/><rect x="20" y="22" width="6" height="4" fill="#6b8e23"/><rect x="15" y="12" width="2" height="4" fill="#ffd7d0"/></g>
+              <g id="s2-f4" style="display:none"><rect x="13" y="2" width="6" height="6" fill="#ffd7d0"/><rect x="12" y="8" width="8" height="6" fill="#6b8e23"/><rect x="10" y="14" width="12" height="12" fill="#6b8e23"/><rect x="8" y="22" width="6" height="4" fill="#6b8e23"/><rect x="18" y="22" width="6" height="4" fill="#6b8e23"/><rect x="21" y="12" width="2" height="4" fill="#ffd7d0"/></g>
+              
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="note">Meta →</div>
+      </div>
+
+      <div class="bottom-controls">
+        <button class="btn" id="restart">Reiniciar Juego</button>
+        <button class="btn secondary" id="shuffle">Barajar preguntas</button>
+      </div>
+
+    </div>
+
+   
+    <div class="panel" id="panel2">
+      <h2>Jugador 2</h2>
+      <div class="meta">Progreso: <span class="score" id="score2">0</span> / 20</div>
+      <div class="question" id="q2">Cargando...</div>
+      <div class="options" id="opts2"></div>
+      <div class="controls-row">
+        <div class="small" id="feedback2">&nbsp;</div>
+        <div>
+          <button class="btn" id="next2" style="display:none">Siguiente</button>
+          <button class="btn secondary" id="skip2">Omitir</button>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+
+  <div id="bannerArea" style="width:100%;max-width:1200px;margin-top:8px"></div>
+<script src="script.js"></script>
+</body>
+</html>
